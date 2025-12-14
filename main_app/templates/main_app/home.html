@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}Главная{% endblock %}
+{% block content %}
+<section class="hero-section">
+    <div class="hero-images">
+        <img src="{% static 'images/mokykla.png' %}" alt="Santarvės mokykla" class="hero-image">
+    </div>
+    <button class="prev"><i class="fa-solid fa-angle-left"></i></button>
+    <button class="next"><i class="fa-solid fa-angle-right"></i></button>
+    <div class="hero-text">
+        <h1 class="hero-title">
+            САЙТ 1 "Б" КЛАССА</h1>
+    </div>
+</section>
+
+<section class="news general-info">
+    <h2 class="moving-title" id="title">Добро пожаловать на сайт!</h2>
+    <p> Добро пожаловать на нашем сайте! Здесь вы найдете последние новости, интересные статьи, полезные советы и многое
+        другое.
+        Мы стараемся создавать контент, который будет интересен каждому посетителю — будь то новости, образовательные
+        материалы или вдохновляющие истории.
+        Наш сайт предназначен для того, чтобы вы могли узнавать новое, оставаться в курсе событий и находить идеи для
+        личного и профессионального развития.
+        Надеемся, что вам понравится проводить время здесь и что каждый визит будет приносить радость и пользу!</p>
+
+</section>
+
+<section class="results general-info">
+    <h3 class="moving-header">Последние новости</h3>
+    <p></p>
+
+</section>
+
+<section class="birthday general-info">
+    <h3 class="moving-header">Наши именинники</h3>
+    <p></p>
+
+</section>
+{% endblock %}
