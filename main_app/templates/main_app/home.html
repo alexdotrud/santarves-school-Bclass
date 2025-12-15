@@ -6,8 +6,6 @@
     <div class="hero-images">
         <img src="{% static 'images/mokykla.png' %}" alt="Santarvės mokykla" class="hero-image">
     </div>
-    <button class="prev"><i class="fa-solid fa-angle-left"></i></button>
-    <button class="next"><i class="fa-solid fa-angle-right"></i></button>
     <div class="hero-text">
         <h1 class="hero-title">
             САЙТ 1 "Б" КЛАССА</h1>
@@ -16,14 +14,42 @@
 
 <section class="news general-info">
     <h2 class="moving-title" id="title">Добро пожаловать на сайт!</h2>
-    <p> Добро пожаловать на нашем сайте! Здесь вы найдете последние новости, интересные статьи, полезные советы и многое
-        другое.
-        Мы стараемся создавать контент, который будет интересен каждому посетителю — будь то новости, образовательные
-        материалы или вдохновляющие истории.
-        Наш сайт предназначен для того, чтобы вы могли узнавать новое, оставаться в курсе событий и находить идеи для
-        личного и профессионального развития.
-        Надеемся, что вам понравится проводить время здесь и что каждый визит будет приносить радость и пользу!</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p class="intro-paragraph">
+                    Наш сайт создан для того, чтобы помочь ученикам, родителям и учителям оставаться на связи и быть в
+                    курсе всех
+                    событий школы. Здесь вы найдете расписание занятий, важные объявления, анонсы мероприятий и
+                    интересные новости,
+                    которые делают школьную жизнь ярче. Мы также поздравляем учеников с днями рождения и делимся
+                    полезными советами
+                    и ресурсами для учебы. Наша цель — создать удобное и приятное пространство, где каждый сможет быстро
+                    найти
+                    нужную информацию и чувствовать себя частью школьного сообщества.
+                </p>
+            </div>
+            <div class="col-md-6 col-sm-12 image-paragraph">
+                <img src="{% static 'images/snow.gif' %}" alt="Snow gif" width="400" height="300">
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="student-gallery general-info">
+    <h3 class="moving-header">Наш класс</h3>
+    <div class="gallery-wrapper">
+        <button class="prev scroll-btn"><i class="fa-solid fa-angle-left"></i></button>
+        <div class="gallery">
+            {% for student in students %}
+            <div class="student-card">
+                <img src="{{ student.photo.url }}" alt="{{ student.name }}">
+                <p>{{ student.name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="next scroll-btn"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
 </section>
 
 <section class="results general-info">
@@ -33,8 +59,48 @@
 </section>
 
 <section class="birthday general-info">
-    <h3 class="moving-header">Наши именинники</h3>
-    <p></p>
+    <h3 class="moving-title" id="title">С Днём Рождения!</h3>
 
+    <p class="birthday-text">
+        Поздравляем наших учеников с их особенным днём!
+        <br>
+        Желаем вам успехов, радости и ярких впечатлений в школе и в
+        жизни!
+    </p>
+
+    <div class="birthday-photos">
+        {% for student in birthday_students %}
+        <div class="birthday-card">
+            <img src="{{ student.photo.url }}" alt="{{ student.name }}">
+            <p>{{ student.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="birthday-videos mb-2">
+        <div class="row">
+            <div class="video-wrapper col-md-6">
+                <iframe width="600" height="300" src="https://www.youtube.com/embed/pYiXOdJQfOQ?si=32rloUwGjU5aB42S"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper col-md-6">
+                <iframe width="600" height="300" src="https://www.youtube.com/embed/0Xz1QAywzd0?si=0UsKEsnnlIjiL8sW"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="birthday-photos">
+        {% for student in birthday_students %}
+        <div class="birthday-card">
+            <img src="{{ student.photo.url }}" alt="{{ student.name }}">
+            <p>{{ student.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 {% endblock %}
