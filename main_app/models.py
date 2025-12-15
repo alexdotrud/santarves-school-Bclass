@@ -18,3 +18,17 @@ class Student(models.Model):
     
     def __str__(self):
         return self.name
+    
+class GalleryPhoto(models.Model):
+    name = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='students_photos/')
+
+    def __str__(self):
+        return self.name
+
+class GalleryVideo(models.Model):
+    title = models.CharField(max_length=100)
+    url = models.URLField()  # YouTube link
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="gallery general-info">
+    <div class="col">
+        <h2 class="moving-title" id="title">Фотогалерея</h2>
+
+        <!-- Photo carousel -->
+        <div class="photo-carousel">
+            {% for photo in photos %}
+            <div class="carousel-item">
+                <img src="{{ photo.photo.url }}" alt="{{ photo.name }}">
+                <p>{{ photo.name }}</p>
+            </div>
+            {% endfor %}
+
+            <button class="carousel-prev"><i class="fa-solid fa-angle-left"></i></button>
+            <button class="carousel-next"><i class="fa-solid fa-angle-right"></i></button>
+
+            <p>
+                Добро пожаловать в нашу Галерею!
+                <br>
+                Здесь собраны самые яркие и памятные моменты учеников: фотографии с
+                занятий, школьных мероприятий, праздников и экскурсий. Вы сможете увидеть улыбки наших детей, весёлые
+                моменты из школьной жизни и достижения каждого ученика. В верхней части страницы представлены
+                фотографии,
+                которые можно листать в карусели, а ниже — праздничные и обучающие видео.
+            </p>
+
+        </div>
+
+        <!-- Videos -->
+        <div class="video-grid">
+            <h2 class="moving-title" id="title">Видеогалерея</h2>
+
+            {% for video in videos %}
+            <div class="video-wrapper">
+                <iframe width="500" height="300" src="#" title="{{ video.title }}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <p>{{ video.title }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+{% endblock %}
