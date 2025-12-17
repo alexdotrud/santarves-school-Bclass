@@ -19,12 +19,6 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     
-class GalleryPhoto(models.Model):
-    name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='students_photos/')
-
-    def __str__(self):
-        return self.name
 
 class GalleryVideo(models.Model):
     title = models.CharField(max_length=100)
@@ -32,3 +26,14 @@ class GalleryVideo(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Photo(models.Model):
+    name = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='gallery_photos/')
+    order = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['order']

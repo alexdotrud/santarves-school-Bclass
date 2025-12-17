@@ -77,14 +77,35 @@ headers.forEach(header => {
     setInterval(animateHeader, 12000);
 });
 
-const gallery = document.querySelector('.gallery');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
+const gallerySection = document.querySelector(".student-gallery");
 
-nextBtn.addEventListener('click', () => {
-    gallery.scrollBy({ left: 200, behavior: 'smooth' });
+const viewport = gallerySection.querySelector(".gallery-viewport");
+const gallery = gallerySection.querySelector(".gallery");
+const prevBtn = gallerySection.querySelector(".prev");
+const nextBtn = gallerySection.querySelector(".next");
+
+const img = gallery.querySelector("img");
+const gap = 16;
+
+function scrollAmount() {
+    return img.offsetWidth + gap;
+}
+
+prevBtn.addEventListener("click", () => {
+    viewport.scrollBy({
+        left: -scrollAmount(),
+        behavior: "smooth",
+    });
 });
 
-prevBtn.addEventListener('click', () => {
-    gallery.scrollBy({ left: -200, behavior: 'smooth' });
+nextBtn.addEventListener("click", () => {
+    const maxScroll = gallery.scrollWidth - viewport.clientWidth;
+    let target = viewport.scrollLeft + scrollAmount();
+
+    if (target > maxScroll) target = maxScroll;
+
+    viewport.scrollTo({
+        left: target,
+        behavior: "smooth",
+    });
 });

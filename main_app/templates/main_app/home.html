@@ -38,24 +38,55 @@
 
 <section class="student-gallery general-info">
     <h3 class="moving-header">Наш класс</h3>
+
     <div class="gallery-wrapper">
-        <button class="prev scroll-btn"><i class="fa-solid fa-angle-left"></i></button>
-        <div class="gallery">
-            {% for student in students %}
-            <div class="student-card">
-                <img src="{{ student.photo.url }}" alt="{{ student.name }}">
-                <p>{{ student.name }}</p>
+        <button class="prev scroll-btn" aria-label="Previous">
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <div class="gallery-viewport">
+            <div class="gallery">
+                {% for student in students %}
+                <img src="{{ student.photo.url }}" alt="{{ student.name }}" class="student-photo" />
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-        <button class="next scroll-btn"><i class="fa-solid fa-angle-right"></i></button>
+
+        <button class="next scroll-btn" aria-label="Next">
+            <i class="fa-solid fa-angle-right"></i>
+        </button>
     </div>
 </section>
 
 <section class="results general-info">
     <h3 class="moving-header">Последние новости</h3>
-    <p></p>
+    <h4>Победители:</h4>
 
+    <div class="podium">
+        <!-- Second place -->
+        <div class="winner second">
+            <div class="avatar">
+                <img src="{% static 'images/2mesto.avif' %}" alt="Second Place">
+            </div>
+            <p class="position">2 место <br> 78,67</p>
+        </div>
+
+        <!-- First place -->
+        <div class="winner first">
+            <div class="avatar">
+                <img src="{% static 'images/1mesto.avif' %}" alt="First Place">
+            </div>
+            <p class="position">1 место <br> 90,92</p>
+        </div>
+
+        <!-- Third place -->
+        <div class="winner third">
+            <div class="avatar">
+                <img src="{% static 'images/3emesto.avif' %}" alt="Third Place">
+            </div>
+            <p class="position">3 место <br> 60,61,64</p>
+        </div>
+    </div>
 </section>
 
 <section class="birthday general-info">

@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="gallery general-info">
+<section class="gallery-page general-info">
     <div class="col">
         <h2 class="moving-title" id="title">Фотогалерея</h2>
 
         <!-- Photo carousel -->
         <div class="photo-carousel">
             {% for photo in photos %}
-            <div class="carousel-item">
-                <img src="{{ photo.photo.url }}" alt="{{ photo.name }}">
-                <p>{{ photo.name }}</p>
-            </div>
+            <img src="{{ photo.photo.url }}" alt="Фото галлерея" class="student-photo" />
+            {% empty %}
+            <p>No photos found!</p>
             {% endfor %}
 
             <button class="carousel-prev"><i class="fa-solid fa-angle-left"></i></button>
@@ -32,15 +31,14 @@
         <div class="video-grid">
             <h2 class="moving-title" id="title">Видеогалерея</h2>
 
-            {% for video in videos %}
             <div class="video-wrapper">
-                <iframe width="500" height="300" src="#" title="{{ video.title }}" frameborder="0"
+                <iframe width=" 495" height="278" src="https://www.youtube.com/embed/vtyliACZuqI" title="1 Б класс"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </iframe>
-                <p>{{ video.title }}</p>
+                <p>1 "Б" класс</p>
             </div>
-            {% endfor %}
 
         </div>
     </div>
