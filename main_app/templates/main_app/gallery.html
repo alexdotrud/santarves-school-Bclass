@@ -5,16 +5,18 @@
         <h2 class="moving-title" id="title">Фотогалерея</h2>
 
         <!-- Photo carousel -->
-        <div class="photo-carousel">
-            {% for photo in photos %}
-            <img src="{{ photo.photo.url }}" alt="Фото галлерея" class="student-photo" />
-            {% empty %}
-            <p>No photos found!</p>
-            {% endfor %}
-
-            <button class="carousel-prev"><i class="fa-solid fa-angle-left"></i></button>
-            <button class="carousel-next"><i class="fa-solid fa-angle-right"></i></button>
-
+        <div class="carousel-wrapper">
+            <div class="photo-carousel">
+                {% for photo in photos %}
+                <img src="{{ photo.photo.url }}" alt="Фото галлерея" class="student-photo" />
+                {% empty %}
+                <p>No photos found!</p>
+                {% endfor %}
+                <button class="carousel-prev"><i class="fa-solid fa-angle-left"></i></button>
+                <button class="carousel-next"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+        </div>
+        <div class="mt-4">
             <p>
                 Добро пожаловать в нашу Галерею!
                 <br>

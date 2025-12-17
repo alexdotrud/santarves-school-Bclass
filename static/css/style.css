@@ -25,17 +25,12 @@ h6 {
     color: var(--primary-brown);
     font-size: 3rem;
     padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 p {
     padding: 1rem;
     font-size: 1.3rem;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
 /* Navigation Styles */
@@ -333,6 +328,68 @@ footer {
 /* Gallery Page */
 .gallery-page {
     margin-bottom: 2rem;
+}
+
+.gallery-text {
+    margin: 3rem;
+}
+
+.photo-carousel {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 600px;
+}
+
+.photo-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.photo-carousel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.student-photo {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .video-wrapper {

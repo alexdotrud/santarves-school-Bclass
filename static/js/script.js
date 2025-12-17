@@ -109,3 +109,24 @@ nextBtn.addEventListener("click", () => {
         behavior: "smooth",
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.photo-carousel');
+    const nextBtn = document.querySelector('.carousel-next');
+    const prevBtn = document.querySelector('.carousel-prev');
+
+    if (!carousel || !nextBtn || !prevBtn) return;
+
+    const getSlideWidth = () => {
+        const firstSlide = carousel.querySelector('.carousel-item');
+        return firstSlide ? firstSlide.offsetWidth : 0;
+    };
+
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+    });
+});
