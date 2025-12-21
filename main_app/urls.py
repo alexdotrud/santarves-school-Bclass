@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.homepage, name='home'),
     path('gallery/', views.gallery, name='gallery'),
     path('matematika/', views.matematika, name='matematika'),
+    path('rodnoj-jazyk/', views.rodnoj_jazyk, name='rodnoj-jazyk'),
+    path('poznanie-mira/', views.poznanie_mira, name='poznanie-mira'),
 ]
 
 if settings.DEBUG:

@@ -23,3 +23,11 @@ def gallery(request):
 
 def matematika(request):
     return render(request, 'main_app/matematika.html')
+
+
+def rodnoj_jazyk(request):
+    return render(request, 'main_app/rodnoj-jazyk.html')
+
+
+def poznanie_mira(request):
+    return render(request, 'main_app/poznanie-mira.html')

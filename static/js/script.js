@@ -46,41 +46,47 @@ setInterval(() => {
     titles.forEach(el => animateTitle(el));
 }, 7000);
 
-// Fuction to make headers animated
-const headers = document.querySelectorAll(".moving-header");
-headers.forEach(header => {
-    function animateHeader() {
-        // Reset immediately to off-screen left without transition
-        header.style.transition = "none";
-        header.style.transform = "translateX(-100%)";
-        header.style.opacity = "0";
 
-        // Force reflow to apply the reset
-        void header.offsetWidth;
+document.addEventListener("DOMContentLoaded", () => {
+    // Typing effect for headers
+    const headers = document.querySelectorAll(".moving-header");
 
-        // Slide in
-        header.style.transition = "transform 6s ease, opacity 6s ease";
-        header.style.transform = "translateX(0)";
-        header.style.opacity = "1";
+    headers.forEach(header => {
+        const text = header.textContent.trim();
+        let isTyping = false;
 
-        // Stay 5 seconds, then slide out to right
-        setTimeout(() => {
-            header.style.transition = "transform 6s ease, opacity 6s ease";
-            header.style.transform = "translateX(100%)";
-            header.style.opacity = "0";
-        }, 9000);
-    }
+        function animateHeader() {
+            if (isTyping) return;
+            isTyping = true;
 
-    // Initial run
-    animateHeader();
+            header.textContent = "";
+            header.style.opacity = "1";
 
-    // Repeat every 9 seconds
-    setInterval(animateHeader, 12000);
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    header.textContent += text[i];
+                    i++;
+                    setTimeout(type, 90);
+                } else {
+                    isTyping = false;
+                }
+            }
+
+            type();
+        }
+
+        animateHeader();
+
+        // repeat every 10 seconds (change if needed)
+        setInterval(animateHeader, 10000);
+    });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
     const gallerySection = document.querySelector(".student-gallery");
-    if (!gallerySection) return; // <-- IMPORTANT: skip on other pages
+    if (!gallerySection) return;
 
     const viewport = gallerySection.querySelector(".gallery-viewport");
     const gallery = gallerySection.querySelector(".gallery");
@@ -109,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Showing images in the gallery page carousel 1 by 1
     const carousel = document.querySelector(".photo-carousel");
     if (!carousel) return;
 
