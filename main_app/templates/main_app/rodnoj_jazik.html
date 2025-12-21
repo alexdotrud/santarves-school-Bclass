@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}Родной язык{% endblock %}
+{% block content %}
+<section class="subject-page general-info">
+    <h1 class="moving-title" id="title">Родной язык</h1>
+
+    <p class="subject-intro">
+        Здесь вы можете найти дополнительные материалы по родному языку. Выбери свой класс (1–4), и ниже появятся
+        задания.
+    </p>
+
+    <!-- Btns for grade choice -->
+    <div class="class-picker" role="tablist" aria-label="Выбор класса">
+        <button type="button" class="class-btn active" data-class="1">1 класс</button>
+        <button type="button" class="class-btn" data-class="2">2 класс</button>
+        <button type="button" class="class-btn" data-class="3">3 класс</button>
+        <button type="button" class="class-btn" data-class="4">4 класс</button>
+    </div>
+
+    <!-- 1 class -->
+    <div class="class-content active" data-class-content="1">
+        <h2 class="moving-header">1 класс</h2>
+        <p class="muted">Буквы, звуки, чтение слогов и простых слов.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/lang/grade1_01.png' %}" target="_blank">
+                <img src="{% static 'prints/lang/grade1_01.png' %}" alt="1 класс — буквы">
+                <span>Буквы и звуки</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/lang/grade1_02.png' %}" target="_blank">
+                <img src="{% static 'prints/lang/grade1_02.png' %}" alt="1 класс — чтение">
+                <span>Чтение слогов</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://childdevelop.ru/worksheets/russian/">
+                Задания по русскому языку
+            </a>
+        </div>
+    </div>
+
+    <!-- 2 class -->
+    <div class="class-content" data-class-content="2">
+        <h2>2 класс</h2>
+        <p class="muted">Слова и предложения, правописание, чтение текстов.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/lang/grade2_01.png' %}" target="_blank">
+                <img src="{% static 'prints/lang/grade2_01.png' %}" alt="2 класс — предложения">
+                <span>Предложения</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/lang/grade2_02.png' %}" target="_blank">
+                <img src="{% static 'prints/lang/grade2_02.png' %}" alt="2 класс — правописание">
+                <span>Правописание</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://uchi.ru/teachers">
+                Упражнения и тексты (Uchi.ru)
+            </a>
+        </div>
+    </div>
+
+    <!-- 3 class -->
+    <div class="class-content" data-class-content="3">
+        <h2>3 класс</h2>
+        <p class="muted">Части речи, орфография, работа с текстом.</p>
+
+        <div class="print-grid">

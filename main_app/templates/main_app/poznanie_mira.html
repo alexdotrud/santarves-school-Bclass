@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}Познание мира{% endblock %}
+{% block content %}
+<section class="subject-page general-info">
+    <h1 class="moving-title" id="title">Познание мира</h1>
+
+    <p class="subject-intro">
+        Здесь вы можете найти материалы по познанию мира: природа, человек, общество. Выбери свой класс (1–4).
+    </p>
+
+    <!-- Btns for grade choice -->
+    <div class="class-picker" role="tablist" aria-label="Выбор класса">
+        <button type="button" class="class-btn active" data-class="1">1 класс</button>
+        <button type="button" class="class-btn" data-class="2">2 класс</button>
+        <button type="button" class="class-btn" data-class="3">3 класс</button>
+        <button type="button" class="class-btn" data-class="4">4 класс</button>
+    </div>
+
+    <!-- 1 class -->
+    <div class="class-content active" data-class-content="1">
+        <h2 class="moving-header">1 класс</h2>
+        <p class="muted">Времена года, животные, растения, мой дом.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/world/grade1_01.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade1_01.png' %}" alt="Времена года">
+                <span>Времена года</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/world/grade1_02.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade1_02.png' %}" alt="Животные">
+                <span>Животные</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://okruzhayuschiy-mir.ru/">
+                Материалы по окружающему миру
+            </a>
+        </div>
+    </div>
+
+    <!-- 2 class -->
+    <div class="class-content" data-class-content="2">
+        <h2>2 класс</h2>
+        <p class="muted">Природа, профессии, правила поведения.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/world/grade2_01.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade2_01.png' %}" alt="Профессии">
+                <span>Профессии</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/world/grade2_02.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade2_02.png' %}" alt="Правила поведения">
+                <span>Правила поведения</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://uchi.ru/teachers">
+                Интерактивные задания
+            </a>
+        </div>
+    </div>
+
+    <!-- 3 class -->
+    <div class="class-content" data-class-content="3">
+        <h2>3 класс</h2>
+        <p class="muted">Человек и общество, карта, экология.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/world/grade3_01.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade3_01.png' %}" alt="Карта">
+                <span>Карта и направления</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/world/grade3_02.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade3_02.png' %}" alt="Экология">
+                <span>Экология</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://interneturok.ru/">
+                Видео-уроки
+            </a>
+        </div>
+    </div>
+
+    <!-- 4 class -->
+    <div class="class-content" data-class-content="4">
+        <h2>4 класс</h2>
+        <p class="muted">История, государства, природа Земли.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/world/grade4_01.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade4_01.png' %}" alt="История">
+                <span>История</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/world/grade4_02.png' %}" target="_blank">
+                <img src="{% static 'prints/world/grade4_02.png' %}" alt="Земля">
+                <span>Планета Земля</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" href="https://school-collection.edu.ru/">
+                Учебные материалы
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
