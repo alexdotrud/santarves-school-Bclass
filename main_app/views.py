@@ -20,3 +20,6 @@ def gallery(request):
         'photos': photos,
         'videos': videos
     })
+
+def matematika(request):
+    return render(request, 'main_app/matematika.html')

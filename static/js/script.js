@@ -1,3 +1,4 @@
+console.log("script.js loaded");
 // Function to generate random color
 function getRandomColor() {
     const colors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#FF6AD5"];
@@ -77,56 +78,89 @@ headers.forEach(header => {
     setInterval(animateHeader, 12000);
 });
 
-const gallerySection = document.querySelector(".student-gallery");
+document.addEventListener("DOMContentLoaded", () => {
+    const gallerySection = document.querySelector(".student-gallery");
+    if (!gallerySection) return; // <-- IMPORTANT: skip on other pages
 
-const viewport = gallerySection.querySelector(".gallery-viewport");
-const gallery = gallerySection.querySelector(".gallery");
-const prevBtn = gallerySection.querySelector(".prev");
-const nextBtn = gallerySection.querySelector(".next");
+    const viewport = gallerySection.querySelector(".gallery-viewport");
+    const gallery = gallerySection.querySelector(".gallery");
+    const prevBtn = gallerySection.querySelector(".prev");
+    const nextBtn = gallerySection.querySelector(".next");
 
-const img = gallery.querySelector("img");
-const gap = 16;
+    if (!viewport || !gallery || !prevBtn || !nextBtn) return;
 
-function scrollAmount() {
-    return img.offsetWidth + gap;
-}
+    const gap = 16;
 
-prevBtn.addEventListener("click", () => {
-    viewport.scrollBy({
-        left: -scrollAmount(),
-        behavior: "smooth",
+    function scrollAmount() {
+        const img = gallery.querySelector("img");
+        return (img?.offsetWidth || 0) + gap;
+    }
+
+    prevBtn.addEventListener("click", () => {
+        viewport.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+        const maxScroll = gallery.scrollWidth - viewport.clientWidth;
+        let target = viewport.scrollLeft + scrollAmount();
+        if (target > maxScroll) target = maxScroll;
+        viewport.scrollTo({ left: target, behavior: "smooth" });
     });
 });
 
-nextBtn.addEventListener("click", () => {
-    const maxScroll = gallery.scrollWidth - viewport.clientWidth;
-    let target = viewport.scrollLeft + scrollAmount();
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".photo-carousel");
+    if (!carousel) return;
 
-    if (target > maxScroll) target = maxScroll;
+    const items = Array.from(carousel.querySelectorAll(".carousel-item"));
+    const prevBtn = document.querySelector(".carousel-prev");
+    const nextBtn = document.querySelector(".carousel-next");
 
-    viewport.scrollTo({
-        left: target,
-        behavior: "smooth",
+    if (!items.length || !prevBtn || !nextBtn) return;
+
+    let index = items.findIndex(el => el.classList.contains("active"));
+    if (index === -1) index = 0;
+
+    function show(i) {
+        items.forEach(el => el.classList.remove("active"));
+        items[i].classList.add("active");
+    }
+
+    show(index);
+
+    nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        index = (index + 1) % items.length;
+        show(index);
+    });
+
+    prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        index = (index - 1 + items.length) % items.length;
+        show(index);
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.photo-carousel');
-    const nextBtn = document.querySelector('.carousel-next');
-    const prevBtn = document.querySelector('.carousel-prev');
+document.addEventListener("DOMContentLoaded", () => {
+    // Showing content by class
+    const buttons = document.querySelectorAll(".class-btn");
+    const blocks = document.querySelectorAll(".class-content");
 
-    if (!carousel || !nextBtn || !prevBtn) return;
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const selectedClass = button.dataset.class;
 
-    const getSlideWidth = () => {
-        const firstSlide = carousel.querySelector('.carousel-item');
-        return firstSlide ? firstSlide.offsetWidth : 0;
-    };
+            buttons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
 
-    nextBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
-    });
+            blocks.forEach(block => block.classList.remove("active"));
 
-    prevBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+            const target = document.querySelector(
+                `.class-content[data-class-content="${selectedClass}"]`
+            );
+            if (target) {
+                target.classList.add("active");
+            }
+        });
     });
 });

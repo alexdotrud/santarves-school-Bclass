@@ -1,48 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block page_name %}Галерея{% endblock %}
 {% block content %}
 <section class="gallery-page general-info">
+
     <div class="col">
         <h2 class="moving-title" id="title">Фотогалерея</h2>
 
-        <!-- Photo carousel -->
         <div class="carousel-wrapper">
             <div class="photo-carousel">
                 {% for photo in photos %}
-                <img src="{{ photo.photo.url }}" alt="Фото галлерея" class="student-photo" />
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ photo.photo.url }}" alt="{{ photo.name }}" class="gallery-photo">
+                </div>
                 {% empty %}
                 <p>No photos found!</p>
                 {% endfor %}
-                <button class="carousel-prev"><i class="fa-solid fa-angle-left"></i></button>
-                <button class="carousel-next"><i class="fa-solid fa-angle-right"></i></button>
             </div>
-        </div>
-        <div class="mt-4">
-            <p>
-                Добро пожаловать в нашу Галерею!
-                <br>
-                Здесь собраны самые яркие и памятные моменты учеников: фотографии с
-                занятий, школьных мероприятий, праздников и экскурсий. Вы сможете увидеть улыбки наших детей, весёлые
-                моменты из школьной жизни и достижения каждого ученика. В верхней части страницы представлены
-                фотографии,
-                которые можно листать в карусели, а ниже — праздничные и обучающие видео.
-            </p>
 
+            <!-- Navigation buttons -->
+            <button type="button" class="carousel-prev" aria-label="Previous">
+                <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <button type="button" class="carousel-next" aria-label="Next">
+                <i class="fa-solid fa-angle-right"></i>
+            </button>
         </div>
 
-        <!-- Videos -->
         <div class="video-grid">
             <h2 class="moving-title" id="title">Видеогалерея</h2>
 
             <div class="video-wrapper">
-                <iframe width=" 495" height="278" src="https://www.youtube.com/embed/vtyliACZuqI" title="1 Б класс"
-                    frameborder="0"
+
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vtyliACZuqI"
+                    title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    allowfullscreen>
                 </iframe>
                 <p>1 "Б" класс</p>
             </div>
-
         </div>
     </div>
 </section>
+
 {% endblock %}

@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_name %}Математика{% endblock %}
+{% block content %}
+<section class="subject-page general-info">
+    <h1 class="moving-title" id="title">Математика</h1>
+
+    <p class="subject-intro">
+        Здесь вы можете найти дополнительные материалы по математике. Выбери свой класс (1–4), и ниже появятся
+        задания.</p>
+
+    <!-- Btns for grade choice -->
+    <div class="class-picker" role="tablist" aria-label="Выбор класса">
+        <button type="button" class="class-btn active" data-class="1">1 класс</button>
+        <button type="button" class="class-btn" data-class="2">2 класс</button>
+        <button type="button" class="class-btn" data-class="3">3 класс</button>
+        <button type="button" class="class-btn" data-class="4">4 класс</button>
+    </div>
+
+    <!-- 1 class -->
+    <div class="class-content active" data-class-content="1">
+        <h2 class="moving-header">1 класс</h2>
+        <p class="muted">Счёт, сложение и вычитание, сравнение чисел.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/math/grade1_01.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade1_01.png' %}" alt="1 класс — карточка 1">
+                <span>Карточка №1 (распечатать)</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/math/grade1_02.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade1_02.png' %}" alt="1 класс — карточка 2">
+                <span>Карточка №2 (распечатать)</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" rel="noopener" href="https://ru.childdevelop.com.ua/generator/math/">
+                Генератор заданий (ChildDevelop)
+            </a>
+            <a class="link-btn" target="_blank" rel="noopener"
+                href="https://tobemum.ru/deti/kak-nauchit/generator-primerov/">
+                Генератор примеров (“Быть мамой”)
+            </a>
+        </div>
+    </div>
+
+    <!-- 2 class -->
+    <div class="class-content" data-class-content="2">
+        <h2>2 класс</h2>
+        <p class="muted">Сложение/вычитание до 100, первые задачи, умножение (введение).</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/math/grade2_01.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade2_01.png' %}" alt="2 класс — карточка 1">
+                <span>Карточка №1 (распечатать)</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/math/grade2_02.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade2_02.png' %}" alt="2 класс — карточка 2">
+                <span>Карточка №2 (распечатать)</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" rel="noopener" href="https://ru.childdevelop.com.ua/generator/math/">
+                Генератор заданий (ChildDevelop)
+            </a>
+            <a class="link-btn" target="_blank" rel="noopener" href="https://1158.ru/generator/">
+                Генератор (Лицей 1158)
+            </a>
+        </div>
+    </div>
+
+    <!-- 3 class -->
+    <div class="class-content" data-class-content="3">
+        <h2>3 класс</h2>
+        <p class="muted">Умножение/деление, задачи на 2 действия, величины.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/math/grade3_01.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade3_01.png' %}" alt="3 класс — карточка 1">
+                <span>Карточка №1 (распечатать)</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/math/grade3_02.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade3_02.png' %}" alt="3 класс — карточка 2">
+                <span>Карточка №2 (распечатать)</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" rel="noopener" href="https://ru.childdevelop.com.ua/generator/math/">
+                Генератор заданий (ChildDevelop)
+            </a>
+            <a class="link-btn" target="_blank" rel="noopener" href="https://xn--5-7sbbdg7cakp.xn--p1ai/">
+                Генератор примеров (“На 5 баллов!”)
+            </a>
+        </div>
+    </div>
+
+    <!-- 4 class-->
+    <div class="class-content" data-class-content="4">
+        <h2>4 класс</h2>
+        <p class="muted">Дроби (введение), задачи повышенной сложности, вычисления в столбик.</p>
+
+        <div class="print-grid">
+            <a class="print-card" href="{% static 'prints/math/grade4_01.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade4_01.png' %}" alt="4 класс — карточка 1">
+                <span>Карточка №1 (распечатать)</span>
+            </a>
+
+            <a class="print-card" href="{% static 'prints/math/grade4_02.png' %}" target="_blank" rel="noopener">
+                <img src="{% static 'prints/math/grade4_02.png' %}" alt="4 класс — карточка 2">
+                <span>Карточка №2 (распечатать)</span>
+            </a>
+        </div>
+
+        <div class="links-row">
+            <a class="link-btn" target="_blank" rel="noopener" href="https://ru.childdevelop.com.ua/generator/math/">
+                Генератор заданий (ChildDevelop)
+            </a>
+            <a class="link-btn" target="_blank" rel="noopener" href="https://1158.ru/generator/">
+                Генератор (Лицей 1158)
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
