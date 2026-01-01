@@ -85,34 +85,84 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const gallerySection = document.querySelector(".student-gallery");
-    if (!gallerySection) return;
+    const root = document.querySelector(".class-carousel");
+    if (!root) return;
 
-    const viewport = gallerySection.querySelector(".gallery-viewport");
-    const gallery = gallerySection.querySelector(".gallery");
-    const prevBtn = gallerySection.querySelector(".prev");
-    const nextBtn = gallerySection.querySelector(".next");
+    const track = root.querySelector(".cc-track");
+    const slides = Array.from(root.querySelectorAll(".cc-slide"));
+    const prev = root.querySelector(".cc-prev");
+    const next = root.querySelector(".cc-next");
 
-    if (!viewport || !gallery || !prevBtn || !nextBtn) return;
+    if (!track || slides.length === 0 || !prev || !next) return;
 
-    const gap = 16;
+    let index = 0;
 
-    function scrollAmount() {
-        const img = gallery.querySelector("img");
-        return (img?.offsetWidth || 0) + gap;
+    function slideWidth() {
+        const slide = slides[0];
+        const gap = parseInt(getComputedStyle(track).gap || "0", 10);
+        return slide.getBoundingClientRect().width + gap;
     }
 
-    prevBtn.addEventListener("click", () => {
-        viewport.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    function maxIndex() {
+        const viewport = root.querySelector(".cc-viewport");
+        const visible = Math.max(1, Math.floor(viewport.clientWidth / slideWidth()));
+        return Math.max(0, slides.length - visible);
+    }
+
+    function update() {
+        const w = slideWidth();
+        const max = maxIndex();
+
+        if (index < 0) index = 0;
+        if (index > max) index = max;
+
+        track.style.transform = `translateX(${-index * w}px)`;
+
+        prev.disabled = index === 0;
+        next.disabled = index === max;
+    }
+
+    prev.addEventListener("click", () => {
+        index -= 1;
+        update();
     });
 
-    nextBtn.addEventListener("click", () => {
-        const maxScroll = gallery.scrollWidth - viewport.clientWidth;
-        let target = viewport.scrollLeft + scrollAmount();
-        if (target > maxScroll) target = maxScroll;
-        viewport.scrollTo({ left: target, behavior: "smooth" });
+    next.addEventListener("click", () => {
+        index += 1;
+        update();
     });
+
+    // Keyboard support
+    root.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") prev.click();
+        if (e.key === "ArrowRight") next.click();
+    });
+    root.tabIndex = 0;
+
+    // Swipe support (mobile)
+    let startX = null;
+    root.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    root.addEventListener("touchend", (e) => {
+        if (startX === null) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+
+        if (Math.abs(diff) > 40) {
+            if (diff > 0) prev.click();
+            else next.click();
+        }
+        startX = null;
+    });
+
+    window.addEventListener("resize", update);
+
+    // Initial
+    update();
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // Showing images in the gallery page carousel 1 by 1

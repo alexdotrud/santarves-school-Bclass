@@ -39,20 +39,24 @@
 <section class="student-gallery general-info">
     <h3 class="moving-header">Наш класс</h3>
 
-    <div class="gallery-wrapper">
-        <button class="prev scroll-btn" aria-label="Previous">
+    <div class="class-carousel" aria-label="Галерея учеников">
+        <button class="cc-btn cc-prev" type="button" aria-label="Назад">
             <i class="fa-solid fa-angle-left"></i>
         </button>
 
-        <div class="gallery-viewport">
-            <div class="gallery">
+        <div class="cc-viewport">
+            <ul class="cc-track">
                 {% for student in students %}
-                <img src="{{ student.photo.url }}" alt="{{ student.name }}" class="student-photo" />
+                <li class="cc-slide">
+                    <figure class="cc-card">
+                        <img src="{{ student.photo.url }}" alt="{{ student.name }}" class="cc-img">
+                    </figure>
+                </li>
                 {% endfor %}
-            </div>
+            </ul>
         </div>
 
-        <button class="next scroll-btn" aria-label="Next">
+        <button class="cc-btn cc-next" type="button" aria-label="Вперёд">
             <i class="fa-solid fa-angle-right"></i>
         </button>
     </div>
