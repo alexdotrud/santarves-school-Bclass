@@ -559,6 +559,28 @@ section {
     transform: translateY(0);
 }
 
+.apps-grid {
+    gap: 28px;
+}
+
+.app-card {
+    margin-bottom: 2rem;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.06),
+        0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.app-card span {
+    margin: 14px auto 4px;
+    padding: 8px 14px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-brown);
+    text-align: center;
+}
 
 /* Footer */
 .site-footer {
