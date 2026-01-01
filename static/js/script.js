@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Showing images in the gallery page carousel 1 by 1
     const carousel = document.querySelector(".photo-carousel");
     if (!carousel) return;
 
@@ -178,24 +177,54 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = items.findIndex(el => el.classList.contains("active"));
     if (index === -1) index = 0;
 
+    let autoplayTimer = null;
+    const INTERVAL = 5000;
+
     function show(i) {
         items.forEach(el => el.classList.remove("active"));
         items[i].classList.add("active");
     }
 
+    function next() {
+        index = (index + 1) % items.length;
+        show(index);
+    }
+
+    function prev() {
+        index = (index - 1 + items.length) % items.length;
+        show(index);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(next, INTERVAL);
+    }
+
+    function stopAutoplay() {
+        if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+        }
+    }
+
     show(index);
+    startAutoplay();
 
     nextBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        index = (index + 1) % items.length;
-        show(index);
+        next();
+        startAutoplay(); // reset timer
     });
 
     prevBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        index = (index - 1 + items.length) % items.length;
-        show(index);
+        prev();
+        startAutoplay(); // reset timer
     });
+
+    // Pause on hover (desktop UX)
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
 });
 
 document.addEventListener("DOMContentLoaded", () => {

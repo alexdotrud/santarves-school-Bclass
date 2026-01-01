@@ -287,9 +287,10 @@ section {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 2px solid var(--primary-brown);
-    background: transparent;
-    color: var(--dark-brown);
+    background: rgba(233, 232, 232, 0.566);
+    color: var(--primary-brown);
+    font-size: 1.2rem;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -421,11 +422,19 @@ section {
 }
 
 .carousel-item {
-    display: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: opacity 420ms ease, transform 420ms ease;
 }
 
 .carousel-item.active {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    position: relative;
 }
 
 .gallery-photo {
